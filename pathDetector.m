@@ -14,7 +14,7 @@ path25      = 8721*.25; % 25% of a path
 noPath      = 800;      % No path
 
 %% Directories
-videoDirectory      = 'Video\';    % Image directory
+videoDirectory      = 'Video\';     % Video directory
 fullPathDirectory   = 'fullPath\';  % Full paths
 path60Directory     = 'path60\';    % 60% paths
 path25Directory     = 'path25\';    % 25% paths
@@ -50,31 +50,31 @@ for i = 1 : length(videoFiles)
         if(pathAmount >= fullPath)
     
             % Full path detected, wiriting file
-            imwrite(image,[fullPathDirectory videoFiles(i).name sprintf('%03d',j) '.jpg']);
+            imwrite(image,[fullPathDirectory videoFiles(i).name(1:end-4) sprintf('%03d',j) '.jpg']);
     
         % Checking if 60% path
         elseif(pathAmount >= path60)
     
             % 60% of a path detected
-            imwrite(image,[path60Directory videoFiles(i).name sprintf('%03d',j) '.jpg']);
+            imwrite(image,[path60Directory videoFiles(i).name(1:end-4) sprintf('%03d',j) '.jpg']);
     
         % Checking if 25% path
         elseif(pathAmount >= path25)
     
             % 25% of a path detected
-            imwrite(image,[path25Directory videoFiles(i).name sprintf('%03d',j) '.jpg']);
+            imwrite(image,[path25Directory videoFiles(i).name(1:end-4) sprintf('%03d',j) '.jpg']);
     
         % Checking if there might be some path
         elseif(pathAmount >= noPath)
     
             % x% of a path detected
-            imwrite(image,[potentialPath videoFiles(i).name sprintf('%03d',j) '.jpg']);
+            imwrite(image,[potentialPath videoFiles(i).name(1:end-4) sprintf('%03d',j) '.jpg']);
     
         % There is no path.... sad.
         else
     
             % No path detected
-            imwrite(image,[noPathDirectory videoFiles(i).name sprintf('%03d',j) '.jpg']);
+            imwrite(image,[noPathDirectory videoFiles(i).name(1:end-4) sprintf('%03d',j) '.jpg']);
         end
     end
 end
